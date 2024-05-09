@@ -71,7 +71,12 @@ export function networkFor(url) {
     return 'mailto'
   }
 
-  return url.match(uri_regex)?.[1] || default_key
+  let matches = url.match(uri_regex)
+  if(matches){
+    return matches[1]
+  }
+
+  return default_key
 }
 
 export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
